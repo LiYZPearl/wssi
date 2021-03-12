@@ -1,0 +1,8 @@
+elasticStructureFoam.C
+
+boundaries/externalPatchToPatchMapping/AverageIOFields.C
+boundaries/externalPatchToPatchMapping/externalPatchToPatchMappingFvPatchFields.C
+boundaries/timeVaryingMappedPressureLoad/timeVaryingMappedPressureLoadFvPatchVectorField.C
+boundaries/tractionDisplacement/tractionDisplacementFvPatchVectorField.C
+
+EXE = $(FOAM_USER_APPBIN)/elasticStructureFoam
