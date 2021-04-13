@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.7.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      materialProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+  rhoMixture             rhoMixture [1 -3 0 0 0 0 0] 2050;
+
+  Ex             1.77e8;
+  Ey             1.77e8;
+  Ez             1.77e8;
+  nuxy           0.2;
+  nuyz           0.2;
+  nuzx           0.2;
+
+  Gxy           0.5e7;  
+  Gyz           0.5e7;
+  Gzx           0.5e7; // para1
+
+kx               kx [ 0 1 -1 0 0 0 0 ] 0.0005;
+ky               ky [ 0 1 -1 0 0 0 0 ] 0.0005; //permeability
+kz               kz [ 0 1 -1 0 0 0 0 ] 0.0001;
+
+
+
+K               K [ 1 -1 -2 0 0 0 0 ] 1.95e9; //Bulk modulus of water
+
+Sr           	Sr [ 0 0 0 0 0 0 0 ] 0.98;
+
+p0           	p0 [ 1 -1 -2 0 0 0 0 ] 5e5;
+
+//gamma_w           gamma_w [ 1 -2 -2 0 0 0 0 ] 1e4;
+//gamma_s           gamma_s [ 1 -2 -2 0 0 0 0 ] 2.65e4;
+
+rho_w		rhoW [1 -3 0 0 0 0 0 ] 1e3;
+rho_s		rhoW [1 -3 0 0 0 0 0 ] 2.65e4;
+
+K0          K0 [ 0 0 0 0 0 0 0 ] 0.5;
+
+n           	n [ 0 0 0 0 0 0 0 ] 0.3;
+
+//wave parameters for calculating liquefaction risk
+waterdepth   waterdepth [ 0 1 0 0 0 0 0 ] 10.0;
+
+
+
+//T           T [ 0 0 1 0 0 0 0 ] 12.5;
+//L           L [ 0 1 0 0 0 0 0 ] 160;
+//pb0         pb0 [ 1 -1 -2 0 0 0 0 ] 0.12e5;
+
+planeStress     no;
+
+model2D        no;
+wave Wave;
+// ************************************************************************* //

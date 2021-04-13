@@ -1,0 +1,8 @@
+#!/bin/bash
+
+gmsh -3 circularGBF_soil.geo 
+
+gmshToFoam circularGBF_soil.msh
+
+biotConsolidationFoam
+
