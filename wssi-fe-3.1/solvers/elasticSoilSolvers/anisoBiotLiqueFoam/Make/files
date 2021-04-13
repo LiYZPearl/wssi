@@ -1,0 +1,9 @@
+
+anisoBiotLiqueFoam.C
+
+boundaries/timeVaryingMappedTotalTraction/timeVaryingMappedTotalTractionFvPatchVectorField.C
+boundaries/fixedTraction/fixedTractionFvPatchVectorField.C
+
+
+
+EXE = $(FOAM_USER_APPBIN)/anisoBiotLiqueFoam

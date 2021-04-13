@@ -1,0 +1,6 @@
+
+anisotropicBiotFoam.C
+
+boundaries/timeVaryingMappedTotalTraction/timeVaryingMappedTotalTractionFvPatchVectorField.C
+
+EXE = $(FOAM_USER_APPBIN)/anisotropicBiotFoam
