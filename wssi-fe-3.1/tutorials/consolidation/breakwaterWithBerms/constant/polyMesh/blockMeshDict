@@ -1,0 +1,109 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.5                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 1;
+x1  0.0;
+x2  317.8;
+x3  411;
+x4  450;
+
+y1  0.0;
+y2  0.1;
+
+z1  0.0;
+z2  -30.0;
+
+
+vertices
+(
+    ( $x1 $y1 $z2)	//(0)
+    ( $x2 $y1 $z2)	//(1)
+    ( $x2 $y2 $z2)	//(2)
+    ( $x1 $y2 $z2)	//(3)
+    ( $x1 $y1 $z1)	//(4)
+    ( $x2 $y1 $z1)	//(5)
+    ( $x2 $y2 $z1)	//(6)
+    ( $x1 $y2 $z1)	//(7)
+    ( $x3 $y1 $z2)	//(8)
+    ( $x3 $y2 $z2)	//(9)
+    ( $x3 $y2 $z1)	//(10)
+    ( $x3 $y1 $z1)	//(11)
+    ( $x4 $y1 $z2)	//(12)
+    ( $x4 $y2 $z2)	//(13)
+    ( $x4 $y2 $z1)	//(14)
+    ( $x4 $y1 $z1)	//(15)
+);
+
+
+blocks          
+(
+    hex (0 3 7 4 1 2 6 5) (1 120 1589) simpleGrading (1 1 1)		//Ny Nz Nx
+    hex (1 2 6 5 8 9 10 11) (1 120 466) simpleGrading (1 1 1)		//Ny Nz Nx
+    hex (8 9 10 11 12 13 14 15) (1 120 195) simpleGrading (1 1 1)	//Ny Nz Nx
+);
+
+edges           
+(
+);
+
+patches         
+(
+    patch bottom 
+    (
+        (0 3 2 1)
+        (1 2 9 8)
+        (8 9 13 12)
+    )
+
+    patch seabed 
+    (
+        (4 7 6 5)
+    )
+
+    patch foundation 
+    (
+        (5 6 10 11)
+    )
+    
+    patch harbor 
+    (
+        (11 10 14 15)
+    )
+
+    patch sides
+    (
+	(0 3 7 4)
+	(12 13 14 15)
+    )
+
+    empty frontAndBack
+    (
+          (0 4 5 1) 
+          (1 5 11 8) 
+          (8 11 15 12) 
+          (3 7 6 2)
+          (2 6 10 9)
+          (9 10 14 13)
+    )
+
+
+);
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //
