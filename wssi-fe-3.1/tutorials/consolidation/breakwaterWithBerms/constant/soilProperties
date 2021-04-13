@@ -1,0 +1,59 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.7.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      materialProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+  rho_s             rho_s [1 -3 0 0 0 0 0] 2650;
+  rho_w             rho_w [1 -3 0 0 0 0 0] 1000;
+
+  Ex             1.2e7;
+  Ey             1.2e7;
+  Ez             2e7;
+  nuxy           0.2;
+  nuyz           0.24;
+  nuzx           0.4;
+
+  Gxy           0.5e7;  
+  Gyz           1.2e7;
+  Gzx           1.2e7; // para1
+
+kx               kx [ 0 1 -1 0 0 0 0 ] 0.005;
+ky               ky [ 0 1 -1 0 0 0 0 ] 0.005; //permeability
+kz               kz [ 0 1 -1 0 0 0 0 ] 0.001;
+
+
+
+K               K [ 1 -1 -2 0 0 0 0 ] 2e9;
+
+Sr           	Sr [ 0 0 0 0 0 0 0 ] 0.975;
+
+p0           	p0 [ 1 -1 -2 0 0 0 0 ] 5e5;
+
+g		   g [0 1 -2 0 0 0 0] (0 0 -9.81);
+ 
+K0          K0 [ 0 0 0 0 0 0 0 ] 0.5;
+
+n           	n [ 0 0 0 0 0 0 0 ] 0.3;
+
+planeStress     no;
+
+model2D        no;
+
+tensionCorrection  yes;
+
+//waterdepth  waterdepth [ 0 1 0 0 0 0 0 ] 12.0;
+
+// ************************************************************************* //
