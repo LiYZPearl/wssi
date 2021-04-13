@@ -1,0 +1,21 @@
+#!/bin/bash
+
+cd solvers
+cd elasticSoilSolvers
+
+for d in */
+do cd $d
+wmake
+echo $d compiled.
+echo 
+cd ..
+done
+
+cd ../../structure
+for d in */
+do cd $d
+wmake
+echo $d compiled.
+echo
+cd ..
+done

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cd solvers
+cd elasticSoilSolvers
+
+for d in */
+do cd $d
+wclean
+cd ..
+done
+
+cd ../../structure
+for d in */
+do cd $d
+wclean
+cd ..
+done
