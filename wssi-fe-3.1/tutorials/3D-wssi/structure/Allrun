@@ -1,0 +1,14 @@
+#!/bin/bash
+
+gmsh -3 circularGBF_structure.geo 
+
+gmshToFoam circularGBF_structure.msh
+
+elasticStructureFoam
+
+sample
+
+chmod u+x boundaryDataTransfer_structure
+
+./boundaryDataTransfer_structure
+

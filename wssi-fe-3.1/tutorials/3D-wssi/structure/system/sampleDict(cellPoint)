@@ -1,0 +1,82 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.2.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      sampleDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+interpolationScheme cellPoint;
+
+setFormat       raw;
+surfaceFormat   foamFile;
+
+sets
+(   
+);
+
+surfaces
+(
+  foundationbottom
+    {
+     type patch;
+     //patches         ( ".*foundationtop.*" );
+     patchName  foundationbottom;
+     interpolate true;
+   }
+  foundationLowersides1
+    {
+     type patch;
+     //patches         ( ".*foundationtop.*" );
+     patchName  foundationLowersides1;
+     interpolate true;
+   }
+  foundationLowersides2
+    {
+     type patch;
+     //patches         ( ".*foundationtop.*" );
+     patchName  foundationLowersides2;
+     interpolate true;
+   }
+  foundationLowersides3
+    {
+     type patch;
+     //patches         ( ".*foundationtop.*" );
+     patchName  foundationLowersides3;
+     interpolate true;
+   }
+  foundationLowersides4
+    {
+     type patch;
+     //patches         ( ".*foundationtop.*" );
+     patchName  foundationLowersides4;
+     interpolate true;
+   }
+  foundationLowersides5
+    {
+     type patch;
+     //patches         ( ".*foundationtop.*" );
+     patchName  foundationLowersides5;
+     interpolate true;
+   }
+  foundationLowersides6
+    {
+     type patch;
+     //patches         ( ".*foundationtop.*" );
+     patchName  foundationLowersides6;
+     interpolate true;
+   }
+);
+
+fields          ( sigma );
+
+// ************************************************************************* //

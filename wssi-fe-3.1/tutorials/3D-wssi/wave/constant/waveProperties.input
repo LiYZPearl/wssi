@@ -1,0 +1,80 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.5                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      environmentalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+seaLevel	0.0;
+seaLevelAsReference false;
+
+// A list of the relaxation zones in the simulation. The parameters are given
+// in <name>Coeffs below.
+relaxationNames (inlet outlet);
+
+initializationName outlet;
+
+inletCoeffs
+{
+   waveType    streamFunction;  
+	specifyPeriod true;
+	period      10;
+	depth      10;
+	phi        0.000000;
+
+
+	specifyEuler true;
+	eulerVelocity       0;
+
+        Niter 10;
+	N 5;
+	height     4.0;
+        Tsoft       10;  // Ramp time
+    	direction  (1.0 0.0 0.0);
+
+
+    relaxationZone
+    {
+        relaxationScheme Spatial;
+        relaxationShape  Rectangular;
+        beachType        Empty;
+    
+        relaxType   INLET;
+        startX      (-196.4 -98.2 0);
+        endX        (-98.2 98.2  0);
+        orientation      (1.0 0.0 0.0);
+    }
+};
+
+
+outletCoeffs
+{
+    waveType    potentialCurrent;
+    U           (0 0 0);
+    Tsoft       10;
+
+    relaxationZone
+    {
+        relaxationScheme Spatial;
+        relaxationShape  Rectangular;
+        beachType        Empty;    
+
+        relaxType   OUTLET;
+        startX      (98.2 -98.2    0);
+        endX        (196.4 98.2  0);
+        orientation      (1.0 0.0 0.0);
+    }
+};
+
+
+
+// ************************************************************************* //

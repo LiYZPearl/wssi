@@ -1,0 +1,73 @@
+#!/bin/sh
+
+#This is the final version of the boundary data transfer program#
+#p instead of p_w, p is pore pressure for seabed domain
+#------------------------------------------------------------------------------------------!
+#Tips:
+#One needs to first copy the sampled /surfaces/ folder to the same directory as this .sh.
+#Then define the patch, folder, variable names and sampled times
+#The output boundaryData folder will be generated at the present directory
+#Ingore the warning of 'cat: ./surfaces/.5/waveStructurePressure/scalarField/p_rgh: No such file or directory'
+#------------------------------------------------------------------------------------------!
+
+
+#echo "Please enter the sampled patch name, eg 'top'. "
+#read patchname
+#echo "Please enter the sampled variable name, eg 'waveStructurePressure'. "
+#read variablename
+#echo "Please enter the maximum sample time. "
+#read maxtime
+#echo "Please enter the time step. "
+#read timestep
+
+patchname='structureBottom' #'bottom'
+
+variableFoldername=$patchname
+variablename='sigma'
+variaWriteName='sigma_S'
+
+for d in ./surfaces/* 
+do
+mkdir -p ./boundaryData/$patchname/$d/
+#Write the default headline contents into the files
+echo 'FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       symmTensorAverageField;
+    object      values;
+}
+// **********************************************************************//
+(0.0 0.0 0.0 0.0 0.0 0.0)' > ./boundaryData/$patchname/$d/$variaWriteName
+#copy values from /surface folder to /boundaryData folder
+#cat  ./surfaces/$d/$variableFoldername/scalarField/$variablename >> ./boundaryData/$patchname/$d/p
+cat  ./$d/$variableFoldername/symmTensorField/$variablename >> ./boundaryData/$patchname/$d/$variaWriteName
+done
+
+
+
+#Transfer the format of the corresponding 'points' file
+echo 'FoamFile
+{
+    version 2.0;
+    format  ascii;
+    class   vectorField;
+    object  points;
+}
+// ******************************************************************************************//
+' > ./boundaryData/$patchname/points
+#cat  ./surfaces/$d/$variableFoldername/points >> ./boundaryData/$patchname/points
+cat  ./$d/$variableFoldername/points >> ./boundaryData/$patchname/points
+
+#Transfer the format of the corresponding 'faces' file
+echo 'FoamFile
+{
+    version 2.0;
+    format  ascii;
+    class   faceList;
+    object  faces;
+}
+// ******************************************************************************************//
+' > ./boundaryData/$patchname/faces
+#cat  ./surfaces/$d/$variableFoldername/faces >> ./boundaryData/$patchname/faces
+cat  ./$d/$variableFoldername/faces >> ./boundaryData/$patchname/faces

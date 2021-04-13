@@ -1,0 +1,94 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.4.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version	2.0;
+    format	ascii;
+    class	dictionary;
+    object	waveProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+seaLevel            0;
+
+seaLevelAsReference false;
+
+relaxationNames     ( inlet outlet );
+
+initializationName  outlet;
+
+inletCoeffs
+{
+    waveType            streamFunction;
+    N                   5;
+    Tsoft               10;
+    depth               10;
+    phi                 0;
+    height              4;
+
+    specifyPeriod       true;
+    period              9.9999936203586;
+
+    specifyEuler        true;
+    eulerVelocity       0;
+
+    omega               0.62831893156291;
+    waveNumber          (0.0639966 0 0);
+    uBar                9.8180042546467;
+    A                   nonuniform List<scalar>
+    5
+    (
+        1.721810221168
+        0.67233884300103
+        0.24339574289884
+        0.10226824550054
+        0.069573539844304
+    );
+    B                   nonuniform List<scalar>
+    5
+    (
+        1.7438032674422
+        0.6732272903531
+        0.18419339097612
+        0.033966704971215
+        0.0028759908615555
+    );
+
+    relaxationZone
+    {
+        relaxationScheme    Spatial;
+        relaxationShape     Rectangular;
+        beachType           Empty;
+        relaxType           INLET;
+        startX              ( -196.4 -98.2 0 );
+        endX                ( -98.2 98.2 0 );
+        orientation         ( 1 0 0 );
+    }
+}
+
+outletCoeffs
+{
+    waveType            potentialCurrent;
+    U                   ( 0 0 0 );
+    Tsoft               10;
+
+    relaxationZone
+    {
+        relaxationScheme    Spatial;
+        relaxationShape     Rectangular;
+        beachType           Empty;
+        relaxType           OUTLET;
+        startX              ( 98.2 -98.2 0 );
+        endX                ( 196.4 98.2 0 );
+        orientation         ( 1 0 0 );
+    }
+}
+
+
+
+// ************************************************************************* //
