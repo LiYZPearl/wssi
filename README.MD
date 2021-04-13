@@ -18,7 +18,7 @@ The work enviroment for the solvers is foam-extend 3.1.
 
 For wave modeling, please select any wave generation toolbox.
 
-To download the \verb+wssi+ structure and soil solvers and tutorials:
+To download the wssi structure and soil solvers and tutorials:
 
     git clone https://github.com/LiYZPearl/wssi
 
