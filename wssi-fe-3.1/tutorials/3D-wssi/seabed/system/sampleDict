@@ -1,0 +1,73 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.7.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      sampleDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//the points are 0.01x or y away from the hexagon 
+interpolationScheme cell;
+
+setFormat       raw;
+
+surfaceFormat foamFile;
+
+sets
+(
+ 	pp1
+	{
+	  type uniform;
+	  axis z;
+          start   (-9.55 0 -10); 
+          end     (-9.55 0 -37); 
+          nPoints 50;
+         }  
+
+ 	pp2
+	{
+	  type uniform;
+	  axis z;
+          start   (0 9.55 -10); 
+          end     (0 9.55 -37); 
+          nPoints 50;
+         }  
+
+ 	pp3
+	{
+	  type uniform;
+	  axis z;
+          start   (9.55 0 -10); 
+          end     (9.55 0 -37); 
+          nPoints 50;
+         } 
+    
+);
+
+surfaces (
+ // seabedPressure
+  //  {
+   //  type patch;
+   //  patchName seabed;
+   //  interpolate true;
+   // }
+  //structuralStress
+  //  {
+   //  type patch;
+   //  patchName structureSurface;
+   //  interpolate true;
+   // }
+
+);
+fields          ( p U); // sigma_S);
+
+
+// ************************************************************************* //
