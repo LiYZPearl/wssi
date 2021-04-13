@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#This case is setup using waves2foam version in foam-extend-3.1
+
+# Set application name
+application="waveFoam"
+
+# Create the computational mesh
+blockMesh
+
+# Create the wave probes
+waveGaugesNProbes
+
+# Compute the wave parameters
+setWaveParameters
+
+# Set the wave field
+setWaveField
+
+# Run the application
+waveFoam
+
+# To a post-processing analysis
+postProcessWaves2Foam
+
+#sample the seabed data
+sample
+
+#use the script to transform the surfaces/ to boundaryData format
+chmod u+x boundaryDataTransfer_seabed
+./boundaryDataTransfer_seabed

@@ -1,0 +1,112 @@
+#!/bin/sh
+
+#This is the final version of the boundary data transfer program#
+#p instead of p_w, p is pore pressure for seabed domain
+#------------------------------------------------------------------------------------------!
+#Tips:
+#One needs to first copy the sampled /surfaces/ folder to the same directory as this .sh.
+#Then define the patch, folder, variable names and sampled times
+#The output boundaryData folder will be generated at the present directory
+#Ingore the warning of 'cat: ./surfaces/.5/waveStructurePressure/scalarField/p_rgh: No such file or directory'
+#------------------------------------------------------------------------------------------!
+
+
+#echo "Please enter the sampled patch name, eg 'top'. "
+#read patchname
+#echo "Please enter the sampled variable name, eg 'waveStructurePressure'. "
+#read variablename
+#echo "Please enter the maximum sample time. "
+#read maxtime
+#echo "Please enter the time step. "
+#read timestep
+
+patchname='seabed'
+maxtime=30
+timestep=0.2
+variableFoldername=$patchname
+variablename='pd'
+
+NUM=22
+i=0
+while [ "$(echo $NUM '>' $maxtime | bc -l)" -eq 0 ]
+do
+
+if [ $(($i % 5)) -eq 0 ] 
+then
+#Make dir of boundaryData folder, define filenames
+mkdir -p ./boundaryData/$patchname/${NUM%.*}/
+#Write the default headline contents into the files
+echo 'FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       scalarAverageField;
+    object      values;
+}
+// **********************************************************************//
+0.0' > ./boundaryData/$patchname/${NUM%.*}/p
+#copy values from /surface folder to /boundaryData folder
+cat  ./surfaces/${NUM%.*}/$variableFoldername/scalarField/$variablename >> ./boundaryData/$patchname/${NUM%.*}/p
+i=$(($i+1))
+NUM=$(echo "$NUM+$timestep" | bc)
+
+else
+#Make dir of boundaryData folder, define filenames
+mkdir -p ./boundaryData/$patchname/$NUM/
+#Write the default headline contents into the files
+echo 'FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       scalarAverageField;
+    object      values;
+}
+// **********************************************************************//
+0.0' > ./boundaryData/$patchname/$NUM/p
+#copy values from /surface folder to /boundaryData folder
+cat  ./surfaces/$NUM/$variableFoldername/scalarField/$variablename >> ./boundaryData/$patchname/$NUM/p
+i=$(($i+1))
+NUM=$(echo "$NUM+$timestep" | bc)
+fi
+
+
+done
+
+
+#The folder of 0.5 cannot be created due the arithmatic problem in .sh writing
+mkdir -p ./boundaryData/$patchname/0.5/
+echo 'FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       scalarAverageField;
+    object      values;
+}
+// **********************************************************************//
+0.0' > ./boundaryData/$patchname/0.5/p
+cat  ./surfaces/0.5/$variableFoldername/scalarField/$variablename >> ./boundaryData/$patchname/0.5/p
+
+
+#Transfer the format of the corresponding 'points' file
+echo 'FoamFile
+{
+    version 2.0;
+    format  ascii;
+    class   vectorField;
+    object  points;
+}
+// ******************************************************************************************//
+' > ./boundaryData/$patchname/points
+cat  ./surfaces/28/$variableFoldername/points >> ./boundaryData/$patchname/points
+
+#Transfer the format of the corresponding 'faces' file
+echo 'FoamFile
+{
+    version 2.0;
+    format  ascii;
+    class   faceList;
+    object  faces;
+}
+// ******************************************************************************************//
+' > ./boundaryData/$patchname/faces
+cat  ./surfaces/28/$variableFoldername/faces >> ./boundaryData/$patchname/faces

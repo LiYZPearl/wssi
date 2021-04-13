@@ -1,0 +1,58 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.2.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      sampleDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+interpolationScheme cellPoint; //cellPointFace with triangulate will generate No face= 2* No field, the same does cell do. cellPoint will have field number either equal to face or point number.
+
+setFormat       raw;
+surfaceFormat   foamFile;
+
+type sets;
+    libs ("libsampling.so");
+
+sets
+(   
+);
+
+surfaces
+(
+//  waveBottomPressure
+//    {
+ //    type patch;
+//     patches ( ".*seabed.*" );
+  //   interpolate true;
+  //  }
+//  waveStructurePressure
+ //   {
+ //    type patch;
+  //   patches         ( ".*structuretop.*" );
+  //   interpolate true;
+  //  }
+
+ 
+  seabed
+    {
+     type patch;
+    // patches         ( ".*seabed.*" );
+     patchName    bottom;
+     interpolate true;
+   }
+
+);
+
+fields          ( pd );
+
+// ************************************************************************* //
