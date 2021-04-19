@@ -29,4 +29,4 @@ To download the wssi structure and soil solvers and tutorials:
     ./Allwmake
 
 
-The user manual of this toolbox is now underconstruction....
+The user manual of this toolbox is now available.
