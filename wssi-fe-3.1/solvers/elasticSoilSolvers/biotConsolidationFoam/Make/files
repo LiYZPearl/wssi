@@ -1,9 +1,0 @@
-
-biotConsolidationFoam.C
-
-boundaries/timeVaryingMappedTotalTraction/timeVaryingMappedTotalTractionFvPatchVectorField.C
-boundaries/fixedTraction/fixedTractionFvPatchVectorField.C
-boundaries/externalPatchToPatchMapping/externalPatchToPatchMappingFvPatchFields.C
-
-
-EXE = $(FOAM_USER_APPBIN)/biotConsolidationFoam
