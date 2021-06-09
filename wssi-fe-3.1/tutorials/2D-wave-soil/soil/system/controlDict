@@ -47,11 +47,6 @@ graphFormat     raw;
 
 runTimeModifiable no;
 
-nonlinearity nonLinear;
-
-wave standingWave;
-
-libs ( /*"libSoilFvPatchFields.so"*/ "libOpenFOAM.so" "libgroovyBC.so");
 
 
 // ************************************************************************* //
