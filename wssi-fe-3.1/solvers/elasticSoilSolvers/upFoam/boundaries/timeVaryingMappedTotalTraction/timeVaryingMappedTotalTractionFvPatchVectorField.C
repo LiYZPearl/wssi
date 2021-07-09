@@ -164,6 +164,7 @@ void timeVaryingMappedTotalTractionFvPatchVectorField::updateCoeffs()
 void timeVaryingMappedTotalTractionFvPatchVectorField::write(Ostream& os) const
 {
     fvPatchVectorField::write(os);
+    writeEntry("value", os);  
 }
 
 
