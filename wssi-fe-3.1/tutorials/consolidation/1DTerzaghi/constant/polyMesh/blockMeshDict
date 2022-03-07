@@ -43,7 +43,7 @@ patches
     (
         (0 4 5 1)
     )
-    patch frontAndBack
+    empty frontAndBack
     (
         (0 1 2 3)
         (4 5 6 7)
@@ -52,7 +52,7 @@ patches
     (
         (3 7 6 2)
     )
-     patch leftAndRight
+     empty leftAndRight
     (
         (0 4 7 3)
         (1 5 6 2)
