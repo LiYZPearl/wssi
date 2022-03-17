@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
 
 	    fvScalarMatrix pEqn
 	    (
-	        fvm::ddt(p) == fvm::laplacian(Dp, p) - fvc::div(fvc::ddt(Dp2,U)) + rho_w* fvc::div(Dp & g)  //fvm::div(Dp*rhoW,g)  rhoW is water density
+	        fvm::ddt(p) == fvm::laplacian(Dp, p) - fvc::div(fvc::ddt(Dp2,U)) + rho_w* fvc::div(Dp & g)  //rho_w is water density
 	    );
 
 	    pResidual = pEqn.solve().initialResidual();
@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
 
               - fvc::grad(p)
 
-              + ifBodyForce * g *rho  //this rho should be the mixture density
+              + ifBodyForce * g *(rho-rho_w)  //this rho should be the mixture density
 
             );
 	   
