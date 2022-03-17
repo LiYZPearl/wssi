@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
 
               - fvc::grad(p)
 
-              + ifBodyForce * g *(rho-rho_w)  //this rho should be the mixture density
+              + ifBodyForce * g *(rho-rho_w)  //this rho is the submerged density 
 
             );
 	   
