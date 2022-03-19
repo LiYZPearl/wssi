@@ -25,7 +25,7 @@ boundaryField
     {
 
         type            fixedValue;
-        value           uniform 98000;  //calculated static wave pressure at the bottom
+        value           uniform 0;  //the static watere pressure term is cancelled in our governing equation for consolidation, therefore no need to add here. 
     }
    sides
     {
