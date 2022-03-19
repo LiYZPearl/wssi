@@ -24,9 +24,9 @@ FoamFile
   nuyz           0.2;
   nuzx           0.2;
 
-  Gxy           0.5e7;  
-  Gyz           0.5e7;
-  Gzx           0.5e7; // para1
+  Gxy           7.375e7;  
+  Gyz           7.375e7;
+  Gzx           7.375e7; // para1
 
 kx               kx [ 0 1 -1 0 0 0 0 ] 0.0005;
 ky               ky [ 0 1 -1 0 0 0 0 ] 0.0005; //permeability
