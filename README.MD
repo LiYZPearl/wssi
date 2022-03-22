@@ -30,7 +30,8 @@ To download the wssi structure and soil solvers and tutorials:
 
 To compile the toolbox in foam-extend-4.0, simply delete the following line in the Make/files in each solver folder,
 as the externalPatchToPatchMapping function does not work in the foam-extend-4.0 version: 
-boundaries/externalPatchToPatchMapping/externalPatchToPatchMappingFvPatchFields.C
+
+    boundaries/externalPatchToPatchMapping/externalPatchToPatchMappingFvPatchFields.C
 
 
 The user manual of this toolbox is now available.
