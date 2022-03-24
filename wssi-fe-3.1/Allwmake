@@ -11,7 +11,7 @@ echo
 cd ..
 done
 
-cd ../../structure
+cd ../structure
 for d in */
 do cd $d
 wmake
