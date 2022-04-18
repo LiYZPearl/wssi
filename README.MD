@@ -20,6 +20,8 @@ For wave modeling, please select any wave generation toolbox.
 
 To download the wssi structure and soil solvers and tutorials:
 
+First, load your OpenFOAM environment for fe-3.1. Then:
+
     git clone https://github.com/LiYZPearl/wssi
 
     cd wssi/wssi-fe-3.1/
