@@ -14,7 +14,7 @@ For any usage of these models please refer to
   publisher={Elsevier}
 }
 
-The work enviroment for the solvers is foam-extend 3.1.
+The work enviroment for the solvers is foam-extend-3.1. 
 
 For wave modeling, please select any wave generation toolbox.
 
@@ -34,5 +34,15 @@ First, load your OpenFOAM environment for fe-3.1. Then:
 
     ./Allwmake
 
+# foam-extend-4.0
+(For foam-extend-4.0, please download the compressed package and compile in the same way.)
+
+# Boundary
+Regarding boundary conditions, if you would like to map curved surfaces, for example, piles,
+it is recommended to use externalPatchToPatchMapping (example in /tutorials/3D-wssi/seabed/30/sigma_S). 
+Then you need to sample with cell, interpolate false; so that
+the face numbers will match the number of data in your time folders. 
 
 The user manual of this toolbox is now available.
+
+
