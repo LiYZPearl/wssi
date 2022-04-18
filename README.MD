@@ -24,6 +24,10 @@ To download the wssi structure and soil solvers and tutorials:
 
     cd wssi/wssi-fe-3.1/
 
+    chmod u+x Allwclean
+    
+    ./Allwclean
+
     chmod u+x Allwmake
 
     ./Allwmake
